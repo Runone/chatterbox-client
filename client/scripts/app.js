@@ -14,10 +14,13 @@ var App = {
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
+    
   },
 
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
+    Messages.results = data.results;
+    
       // examine the response from the server request:
       //console.log(data);
       //send to Messages
@@ -25,14 +28,9 @@ var App = {
     //    for (var key in window.Messages.results) {
     //   this.renderMessage(window.Messages.results[key].username, window.Messages.results[key].text, window.Messages.results[key].roomname);
     // }
-      for (let i = 0; i < data.results.length; i++) {
-        callback();
-        debugger;
-        if (data.results[i].username && data.results[i].text && data.results[i].roomname) {
-          MessagesView.renderMessage(data.results[i].username, data.results[i].text, data.results[i].roomname);
-          console.log(data);  
-        }
-      }   
+      callback();
+      MessagesView.render();
+  console.log(data);   
     });
   },
 

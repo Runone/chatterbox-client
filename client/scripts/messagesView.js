@@ -8,6 +8,11 @@ var MessagesView = {
   },
 
   render: function() {
+    for (let i = 0; i < Messages.results.length; i++) {
+        if (Messages.results[i].username && Messages.results[i].text && Messages.results[i].roomname) {
+          MessagesView.renderMessage(Messages.results[i].username, Messages.results[i].text, Messages.results[i].roomname);
+        }
+      }
   },
 
   renderMessage: function (name, message, roomname) {
