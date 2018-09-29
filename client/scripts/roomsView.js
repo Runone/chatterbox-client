@@ -11,7 +11,6 @@ var RoomsView = {
   
   renderRoom: function (room) {
     let newRoom = _.template('<div id="rooms"><%-rooms%></div>');
-    
     this.$select.append(newRoom);
   }
 };
