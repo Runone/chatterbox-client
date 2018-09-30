@@ -9,7 +9,9 @@ var FormView = {
   handleSubmit: function(event) {
     // Stop the browser from submitting the form
     event.preventDefault();
-    
+    let newIncomingMessage = {username: App.username, roomname: 'cats', text: $('#message').val()};
+    Parse.create(newIncomingMessage);
+    MessagesView.renderMessage(newIncomingMessage.username, newIncomingMessage.text, newIncomingMessage.roomname);
     console.log('click!');
   },
 

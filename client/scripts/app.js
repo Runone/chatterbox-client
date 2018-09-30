@@ -20,7 +20,7 @@ var App = {
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
     Messages.results = data.results;
-    
+    Rooms.results = data.results;
       // examine the response from the server request:
       //console.log(data);
       //send to Messages
@@ -30,6 +30,7 @@ var App = {
     // }
       callback();
       MessagesView.render();
+      RoomsView.render();
   console.log(data);   
     });
   },
