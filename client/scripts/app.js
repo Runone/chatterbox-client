@@ -19,19 +19,11 @@ var App = {
 
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
-    Messages.results = data.results;
-    Rooms.results = data.results;
-      // examine the response from the server request:
-      //console.log(data);
-      //send to Messages
-      //data an object with key of results and the value being an array of length 100
-    //    for (var key in window.Messages.results) {
-    //   this.renderMessage(window.Messages.results[key].username, window.Messages.results[key].text, window.Messages.results[key].roomname);
-    // }
+      Messages.results = data.results;
       callback();
       MessagesView.render();
       RoomsView.render();
-  console.log(data);   
+      console.log(data);   
     });
   },
 
